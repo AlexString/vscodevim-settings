@@ -1,0 +1,269 @@
+{
+	//=============================================================================
+	// Vscode vim plugin
+	//=============================================================================
+	"vim.leader": "<space>", // leader key
+	"vim.easymotion": true,
+	"vim.camelCaseMotion.enable": true,
+	// exclude keybindings from vscodevim
+	"vim.handleKeys": {
+		"<C-d>": false,
+		"<C-c>": false,
+		"<C-a>": false,
+		"<C-b>": false,
+		"<C-q>": false,
+		"<C-f>": false,
+		"<C-x>": false,
+		"<C-w>": false
+	},
+	// configure InsertMode KeyBindings
+	"vim.insertModeKeyBindings": [
+		{
+			// Enter normal mode
+			"before": ["j", "j"],
+			"after": ["<Esc>"]
+		},
+		// Navigating through autocomplete options
+		{
+			
+			"before": ["<C-j>"],
+			"commands": ["selectNextSuggestion"],
+			"when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+		},
+		{
+			"before": ["<C-k>"],
+			"commands": ["selectPrevSuggestion"],
+			"when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+		}
+	],
+	// configure Keybindings for NormalMode
+	"vim.normalModeKeyBindingsNonRecursive": [
+		// -- handle files --
+		{
+			// save file
+			"before": ["q", "w"],
+			"commands": ["workbench.action.files.save"]
+		},
+		// -- Inserting cursors --
+		{
+			// Insert cursor above
+			"before": ["<S-k>"],
+			"commands": ["editor.action.insertCursorAbove"]
+		},
+		{
+			// Insert cursor below
+			"before": ["<S-j>"],
+			"commands": ["editor.action.insertCursorBelow"]
+		},
+		// -- vim EasyMotion --
+		{
+			// Search a specified letter to move cursor
+			"before": ["t"],
+			"after": ["<leader>", "<leader>", "s"]
+		},
+		{
+			// EasyMotion backward
+			"before": ["<leader>", "b"],
+			"after": ["<leader>", "<leader>", "b"]
+		},
+		// -- handle toggles --
+		{
+			// toggle zen mode
+			"before": ["<leader>", "z"],
+			"commands": ["workbench.action.toggleZenMode"]
+		},
+		{
+			// toggle folding
+			"before": ["<leader>", "f"],
+			"commands": ["editor.toggleFold"]
+		},
+		{
+			// toggle comment
+			"before": ["<leader>", "c"],
+			"commands": ["editor.action.commentLine"]
+		},
+		// -- open shortcuts --
+		{
+			// open to the side
+			"before": ["<C-g>"],
+			"commands": ["workbench.action.splitEditor"]
+		},
+		// -- text only --
+		{
+			// Paste in current line and yank it again
+			"before": ["<leader>", "p"],
+			"after": ["V", "p", "Y"]
+		},
+		{
+			// Copy text only
+			"before": ["y", "Y"],
+			"after": ["^", "y", "$"]
+		},
+		{
+			// Cut text only
+			"before": ["d", "D"],
+			"after": ["^", "d", "$"]
+		},
+		// -- Moving faster --
+		{
+			// Move down faster
+			"before": ["<C-j>"],
+			"after": ["8", "j"]
+		},
+		{
+			// Move up faster
+			"before": ["<C-k>"],
+			"after": ["8", "k"]
+		},
+		{
+			// Jump to start of line
+			"before": ["H"],
+			"after": ["^"]
+		},
+		{
+			// Jump to end of line
+			"before": ["L"],
+			"after": ["$"]
+		},
+		{
+			// Go to a mark
+			"before": ["<leader>", "m"],
+			"after": ["'"]
+		},
+		{
+			// Jump between brackets
+			"before": ["<leader>", "l"],
+			"after": ["%"]
+		},
+		// -- Moving through groups --
+		{
+			// Move to previous group
+			"before": ["<C-u>"],
+			"commands": ["workbench.action.focusLeftGroup"]
+		},
+		{
+			// Move to previous group
+			"before": ["<C-i>"],
+			"commands": ["workbench.action.focusRightGroup"]
+		},
+		// -- Moving through tabs --
+		{
+			// Move to previous tab
+			"before": ["<C-h>"],
+			"commands": ["workbench.action.previousEditor"]
+		},
+		{
+			// Move to next tab
+			"before": ["<C-l>"],
+			"commands": ["workbench.action.nextEditor"]
+		},
+		// -- Scrolling --
+		{
+			// Scroll down
+			"before": ["<"],
+			"commands": ["scrollLineDown"]
+		},
+		{
+			// Scroll up
+			"before": [">"],
+			"commands": ["scrollLineUp"]
+		},
+		{
+			"before": ["<leader>", "e"],
+			"commands": ["workbench.view.explorer"]
+		}
+	],
+	// configure Keybindings for VisualMode
+	"vim.visualModeKeyBindings": [
+		// -- selections --
+		{
+			// Duplicate selection
+			"before": ["<leader>", "p"],
+			"after": ["y", "P"]
+		},
+		{
+			// Join selected lines
+			"before": ["<leader>", "j"],
+			"commands": ["editor.action.joinLines"]
+		},
+		{
+			// exit visual mode
+			"before": ["<leader>", "<leader>"],
+			"after": ["<Esc>"]
+		},
+		// -- indent lines on visual mode --
+		{
+			// indent inside
+			"before": ["<Tab>"],
+			"commands": ["editor.action.indentLines"]
+		},
+		{
+			// indent outside
+			"before": ["<S-Tab>"],
+			"commands": ["editor.action.outdentLines"]
+		},
+		{
+			// toggle comment
+			"before": ["<leader>", "c"],
+			"commands": ["editor.action.commentLine"]
+		},
+		{
+			// format selection
+			"before": ["<leader>", "f"],
+			"commands": ["editor.action.formatSelection"]
+		},
+		// -- Moving faster --
+		{
+			// Move down faster
+			"before": ["<C-j>"],
+			"after": ["8", "j"]
+		},
+		{
+			// Move up faster
+			"before": ["<C-k>"],
+			"after": ["8", "k"]
+		},
+		{
+			// Jump to start of line
+			"before": ["H"],
+			"after": ["^"]
+		},
+		{
+			// Jump to end of line
+			"before": ["L"],
+			"after": ["$"]
+		},
+		// -- Matching selections --
+		{
+			// Select all matches
+			"before": ["s", "a"],
+			"commands": ["editor.action.selectHighlights"]
+		},
+		{
+			// Select next match
+			"before": ["s", "n"],
+			"commands": ["editor.action.addSelectionToNextFindMatch"]
+		},
+		{
+			// Select previous match
+			"before": ["s", "p"],
+			"commands": ["editor.action.addSelectionToPreviousFindMatch"]
+		},
+		{
+			// move to prev match
+			"before": ["g", "p"],
+			"commands": ["editor.action.moveSelectionToPreviousFindMatch"]
+		},
+		{
+			// move to next match
+			"before": ["g", "n"],
+			"commands": ["editor.action.moveSelectionToNextFindMatch"]
+		},
+		// -- Renaming --
+		{
+			// rename selection
+			"before": ["<leader>", "r"],
+			"commands": ["editor.action.rename"]
+		}
+	]
+}
